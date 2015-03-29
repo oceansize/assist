@@ -4,13 +4,16 @@ module Assist
   class Player
 
     include HTTParty
+    # debug_output $stdout
 
-    BASE_URL = 'https://api.dribbble.com/v1/users/' 
     AUTH_TOKEN = ENV["ASSIST_AUTH"]
 
-    def profile
-      
-    end
+    base_uri "api.dribbble.com/v1"
+    format :json
 
+    def profile(user)
+      # self.class.get 'Mikuloctopus?access_token='
+      self.class.get("/users/#{user}", :query => { :access_token => AUTH_TOKEN })
+    end
   end
 end
