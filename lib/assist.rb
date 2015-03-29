@@ -12,7 +12,6 @@ module Assist
     format :json
 
     def profile(user)
-      # self.class.get 'Mikuloctopus?access_token='
       self.class.get("/users/#{user}", :query => { :access_token => AUTH_TOKEN })
     end
   end
